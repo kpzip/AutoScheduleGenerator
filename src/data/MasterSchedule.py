@@ -1,5 +1,5 @@
 import numpy as np
-import RoomSchedule
+from RoomSchedule import RoomSchedule
 
 class MasterSchedule:
 

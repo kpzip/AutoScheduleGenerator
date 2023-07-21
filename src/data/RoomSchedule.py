@@ -1,11 +1,11 @@
 import numpy as np
-import Schedule
-from src.Constants import DAYS_IN_WEEK, NUMBER_OF_PERIODS
+from Schedule import Schedule
+import Constants
 
 class RoomSchedule(Schedule):
 
   def __init__(self, room):
-    Schedule.__init__(self, NUMBER_OF_PERIODS + 1)
+    super.__init__(self, Constants.NUMBER_OF_PERIODS + 1)
     self.room = room
 
   def getRoom(self):
