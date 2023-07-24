@@ -162,4 +162,4 @@ cython_debug/
 #PyDev
 .project
 .pydevproject
-.settings
+.settings/
