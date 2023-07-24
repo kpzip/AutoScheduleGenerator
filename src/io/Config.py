@@ -5,6 +5,7 @@ Created on Jul 24, 2023
 '''
 import json
 
+
 class Config:
 
     def __init__(self, version_num):
@@ -13,6 +14,7 @@ class Config:
     def getVersion(self):
         return self.version
 
+
 def readConfig(location):
     configfile = open(location, "r")
     configdata = json.load(configfile)
@@ -20,8 +22,8 @@ def readConfig(location):
     configobject = Config(configdata["version"])
     return configobject
 
+
 CONFIG = readConfig("settings.json")
 print (CONFIG.getVersion())
-
 
     

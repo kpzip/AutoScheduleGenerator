@@ -23,64 +23,63 @@ ranked_electives
 list of Courses, the electives a student wishes to take
 '''
 
-import numpy as np
 
 class Student:
     
-  def __init__(self, name, id, gradenum, element, mandatory_courses, ranked_mandatory_courses, ranked_electives, takesZeroPeriod):
-    self.name = name
-    self.id = id
-    self.gradenum = gradenum
-    self.element = element
-    self.mandatory_courses = mandatory_courses
-    self.ranked_mandatory_courses = ranked_mandatory_courses
-    self.ranked_electives = ranked_electives
-    self.takesZeroPeriod = takesZeroPeriod
+    def __init__(self, name, identifier, gradenum, element, mandatory_courses, ranked_mandatory_courses, ranked_electives, takesZeroPeriod):
+        self.name = name
+        self.identifier = identifier
+        self.gradenum = gradenum
+        self.element = element
+        self.mandatory_courses = mandatory_courses
+        self.ranked_mandatory_courses = ranked_mandatory_courses
+        self.ranked_electives = ranked_electives
+        self.takesZeroPeriod = takesZeroPeriod
 
-  def getName(self):
-    return self.name
-
-  def setName(self, name):
-    self.name = name
-
-  def getId(self):
-    return self.id
-
-  def setId(self, id):
-    self.id = id
-
-  def getGradeNum(self):
-    return self.gradenum
-
-  def setgradeNum(self, gradenum):
-    self.gradenum = gradenum
-
-  def getElement(self):
-    return self.element
-
-  def setElement(self, element):
-    self.element = element
-
-  def getMandatoryCourses(self):
-    return self.mandatory_courses
-
-  def setMandatoryCourses(self, mandatory_courses):
-    self.mandatory_courses = mandatory_courses
-
-  def getRankedMandatoryCourses(self):
-    return self.ranked_mandatory_courses
-
-  def setRankedMandatoryCourses(self, ranked_mandatory_courses):
-    self.ranked_mandatory_courses = ranked_mandatory_courses
-
-  def getRankedElectives(self):
-    return ranked_electives
-
-  def setRankedElectives(self):
-    self.ranked_electives = ranked_electives
-
-  def getTakesZeroPeriod(self):
-    return self.takesZeroPeriod
-
-  def setTakesZeroPeriod(self, takesZeroPeriod):
-    self.takesZeroPeriod = takesZeroPeriod
+    def getName(self):
+        return self.name
+    
+    def setName(self, name):
+        self.name = name
+    
+    def getId(self):
+        return self.identifier
+    
+    def setId(self, identifier):
+        self.identifier = identifier
+    
+    def getGradeNum(self):
+        return self.gradenum
+    
+    def setgradeNum(self, gradenum):
+        self.gradenum = gradenum
+    
+    def getElement(self):
+        return self.element
+    
+    def setElement(self, element):
+        self.element = element
+    
+    def getMandatoryCourses(self):
+        return self.mandatory_courses
+    
+    def setMandatoryCourses(self, mandatory_courses):
+        self.mandatory_courses = mandatory_courses
+    
+    def getRankedMandatoryCourses(self):
+        return self.ranked_mandatory_courses
+    
+    def setRankedMandatoryCourses(self, ranked_mandatory_courses):
+        self.ranked_mandatory_courses = ranked_mandatory_courses
+    
+    def getRankedElectives(self):
+        return self.ranked_electives
+    
+    def setRankedElectives(self, ranked_electives):
+        self.ranked_electives = ranked_electives
+    
+    def getTakesZeroPeriod(self):
+        return self.takesZeroPeriod
+    
+    def setTakesZeroPeriod(self, takesZeroPeriod):
+        self.takesZeroPeriod = takesZeroPeriod

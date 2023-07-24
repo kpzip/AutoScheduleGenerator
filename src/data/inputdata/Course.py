@@ -17,36 +17,35 @@ num_periods_per_week
 int, the number of periods this course has per week
 '''
 
-import numpy as np
 
 class Course:
     
-  def __init__(self, name, req_one_per_element, prefered_required_room, num_periods_per_week):
-    self.name = name
-    self.req_one_per_element = req_one_per_element
-    self.prefered_required_room = prefered_required_room
-    self.num_periods_per_week = num_periods_per_week
+    def __init__(self, name, req_one_per_element, prefered_required_room, num_periods_per_week):
+        self.name = name
+        self.req_one_per_element = req_one_per_element
+        self.prefered_required_room = prefered_required_room
+        self.num_periods_per_week = num_periods_per_week
 
-  def getName(self):
-    return self.name
+    def getName(self):
+        return self.name
+    
+    def setName(self, name):
+        self.name = name
 
-  def setName(self, name):
-    self.name = name
+    def getReqOnePerElement(self):
+        return self.req_one_per_element
 
-  def getReqOnePerElement(self):
-    return self.req_one_per_element
+    def setReqOnePerElement(self, req_one_per_element):
+        self.req_one_per_element = req_one_per_element
 
-  def setReqOnePerElement(self, req_one_per_element):
-    self.req_one_per_element = req_one_per_element
+    def getPreferedRequiredRoom(self):
+        return self.prefered_required_room
 
-  def getPreferedRequiredRoom(self):
-    return self.prefered_required_room
+    def setPreferedRequiredRoom(self, prefered_required_room):
+        self.prefered_required_room = prefered_required_room
 
-  def setPreferedRequiredRoom(self, prefered_required_room):
-    self.prefered_required_room = prefered_required_room
+    def getNumPeriodsPerWeek(self):
+        return self.num_periods_per_week
 
-  def getNumPeriodsPerWeek(self):
-    return self.num_periods_per_week
-
-  def setNumPeriodsPerWeek(self, num_periods_per_week):
-    self.num_periods_per_week = num_periods_per_week
+    def setNumPeriodsPerWeek(self, num_periods_per_week):
+        self.num_periods_per_week = num_periods_per_week
