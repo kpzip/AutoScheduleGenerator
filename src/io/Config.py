@@ -25,5 +25,4 @@ def readConfig(location):
 
 CONFIG = readConfig("settings.json")
 print (CONFIG.getVersion())
-
     

@@ -1,5 +1,5 @@
-import numpy as np
 from src.data.RoomSchedule import RoomSchedule
+import numpy as np
 
 
 class MasterSchedule:

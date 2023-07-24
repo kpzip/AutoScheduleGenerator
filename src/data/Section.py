@@ -1,4 +1,5 @@
 
+
 class Section:
     
     def __init__(self, course, sectionnum, teacher, students, room):

@@ -1,7 +1,8 @@
-import numpy as np
 from abc import ABC
-import src.data.Constants as Constants
+
 from src.data.Section import Section
+import numpy as np
+import src.data.Constants as Constants
 
 
 class Schedule(ABC):
