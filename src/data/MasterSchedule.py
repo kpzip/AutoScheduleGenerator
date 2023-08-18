@@ -1,4 +1,4 @@
-from src.data.RoomSchedule import RoomSchedule
+from RoomSchedule import RoomSchedule
 import numpy as np
 
 
@@ -14,7 +14,14 @@ class MasterSchedule:
         return None
     
     def addRoomSchedule(self, roomSchedule):
-        self.roomSchedules.append(roomSchedule)
+        self.roomSchedules = np.append(self.roomSchedules, roomSchedule)
     
     def getNumberOfRooms(self):
         return self.roomSchedules.size()
+    
+    def getIndexesOfRoomsWithPeriodUnoccuppied(self, period):
+        rooms_with_period_unoccupied = np.array([])
+        for i in range(self.roomSchedules.size):
+            if self.roomSchedules[i].sections[0][period] == None:
+                rooms_with_period_unoccupied = np.append(rooms_with_period_unoccupied, i)
+        return rooms_with_period_unoccupied

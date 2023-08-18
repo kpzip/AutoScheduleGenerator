@@ -1,8 +1,8 @@
 from abc import ABC
+
 from src.data.Section import Section
 import numpy as np
 import src.data.Constants as Constants
-
 
 class Schedule(ABC):
 
