@@ -163,3 +163,7 @@ cython_debug/
 .project
 .pydevproject
 .settings/
+
+# Added by cargo
+
+/target
