@@ -1,5 +1,5 @@
-from src.data.Schedule import Schedule
-import src.data.Constants as Constants
+from Schedule import Schedule
+import Constants as Constants
 
 
 class RoomSchedule(Schedule):
