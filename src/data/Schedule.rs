@@ -1,28 +1,28 @@
-mod data::Section;
+use crate::data::Section::*;
 use std::default::Default;
 
-pub static NUM_PERIODS_IN_DAY: u32 = 8;
+pub const NUM_PERIODS_IN_DAY: usize = 8;
 
 trait Schedule {
-    fn get_section(&self, period: i32) -> Section::Section;
+    fn get_section(&self, period: usize) -> &Section;
 }
 
-pub struct StudentSchedule {
+pub struct StudentSchedule<'a> {
     has_zero_period: bool,
-    sections: [&Section::Section, &NUM_PERIODS_IN_DAY + has_zero_period as i32],
+    sections: [&'a Section; NUM_PERIODS_IN_DAY + 1],
 }
 
-impl Schedule for StudentSchedule {
-    fn get_section(&self, period: i32) -> Section::Section {
+impl Schedule for StudentSchedule<'_> {
+    fn get_section(&self, period: usize) -> &Section {
         self.sections[period]
     }
 }
 
-impl Default for StudentSchedule {
+impl Default for StudentSchedule<'_> {
     fn default() -> StudentSchedule {
         StudentSchedule {
             has_zero_period: true,
-            sections: [&Section::EMPTY_SECTION; &NUM_PERIODS_IN_DAY + 1],
+            sections: [&EMPTY_SECTION; NUM_PERIODS_IN_DAY + 1],
         }
     }
 }
