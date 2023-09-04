@@ -24,11 +24,11 @@ ranked_electives
 list of Courses, the electives a student wishes to take
 */
 
-pub struct Student {
-    name: &str,
-    id: &str,
+pub struct Student<'a> {
+    name: &'a str,
+    id: &'a str,
     gradenum: i32,
-    element: &str,
+    element: &'a str,
     mandatory_courses: Vec<Course::Course>,
     ranked_mandatory_courses: Vec<Vec<Course::Course>>,
     ranked_electives: Vec<Course::Course>,

@@ -18,9 +18,9 @@ students_ranked
 map, student : weight, weight ranges from -1 -> +1, where negative means the teacher doesn't want the student in their class and +1 means they do
 */
 
-pub struct Teacher {
-    name: &str,
+pub struct Teacher<'a> {
+    name: &'a str,
     id: &str,
     ranked_courses: Vec<Course::Course>,
-    periods_available: Vec<i32> // students_ranked :
+    periods_available: Vec<i32>, // students_ranked :
 }

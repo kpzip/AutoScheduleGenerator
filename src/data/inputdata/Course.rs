@@ -18,8 +18,8 @@ num_periods_per_week
 int, the number of periods this course has per week
 */
 
-pub struct Course {
-    name: &str,
+pub struct Course<'a> {
+    name: &'a str,
     req_one_per_element: bool,
     prefered_required_room: (i32, Room::Room),
     num_periods_per_week: i32,
