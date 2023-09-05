@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream
 mod data;
 use crate::data::Schedule;
-
-fn main() {}
-=======
-use crate::
 
 fn main() {
     let c = Course::Course {
@@ -26,4 +21,3 @@ fn main() {
 
     println!("{}", s.name);
 }
->>>>>>> Stashed changes

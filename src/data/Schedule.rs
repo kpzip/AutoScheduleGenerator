@@ -70,6 +70,7 @@ impl TeacherSchedule<'_> {
         if end {
             self.sections.append(&mut vec![&EMPTY_SECTION; amount])
         } else {
+            assert!(self.first_teaching_period - amount as u8 >= 0);
             self.sections.reverse();
             self.expand(amount, true);
             self.sections.reverse();
