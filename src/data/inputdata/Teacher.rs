@@ -1,4 +1,6 @@
-crate::data::inputdata::Course;
+use crate::data::inputdata::Course;
+
+pub mod Course;
 /*
 Variables:
 
@@ -18,9 +20,24 @@ students_ranked
 map, student : weight, weight ranges from -1 -> +1, where negative means the teacher doesn't want the student in their class and +1 means they do
 */
 
+trait preference {
+    fn evaluate(&self) -> i32
+}
+
 pub struct Teacher<'a> {
     name: &'a str,
-    id: &str,
+    id: &'a str,
     ranked_courses: Vec<Course::Course>,
     periods_available: Vec<i32>, // students_ranked :
 }
+
+impl preference for Teacher {
+    fn evaluate (&self) -> i32 {
+        let score : mut i32 = 0;
+
+        for course in self.ranked_courses {
+            // need teacher schedule to be done
+        }
+    }
+}
+
