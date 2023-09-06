@@ -1,6 +1,4 @@
-use crate::data::inputdata::Course;
-
-pub mod Course;
+use crate::data::inputdata::*;
 /*
 Variables:
 
@@ -21,7 +19,7 @@ map, student : weight, weight ranges from -1 -> +1, where negative means the tea
 */
 
 trait preference {
-    fn evaluate(&self) -> i32
+    fn evaluate(&self) -> f64;
 }
 
 pub struct Teacher<'a> {
@@ -32,12 +30,11 @@ pub struct Teacher<'a> {
 }
 
 impl preference for Teacher {
-    fn evaluate (&self) -> i32 {
-        let score : mut i32 = 0;
+    fn evaluate(&self) -> f64 {
+        let mut score: f64 = 0;
 
         for course in self.ranked_courses {
             // need teacher schedule to be done
         }
     }
 }
-

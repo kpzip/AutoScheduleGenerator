@@ -1,6 +1,5 @@
-use crate::data::inputdata::Course;
-
-pub mod Course;
+mod Course;
+mod Preference;
 /*
 Variables:
 
@@ -26,10 +25,6 @@ ranked_electives
 list of Courses, the electives a student wishes to take
 */
 
-trait preference {
-    fn evaluate(&self) -> i32
-}
-
 pub struct Student<'a> {
     name: &'a str,
     id: &'a str,
@@ -40,18 +35,29 @@ pub struct Student<'a> {
     ranked_electives: Vec<Course::Course>,
 }
 
-impl preference for Student {
-    fn evaluate (&self) -> i32 {
-        let score : mut i32 = 0;
+impl Preference::Preference for Student<'_> {
+    fn evaluate(&self) -> f64 {
+        let mut score: f64 = 0f64;
 
-        for elective in self.ranked_electives {
+        for i in 0..self.ranked_electives.len() {
             // i need student schedule to be done
+            /*
+            chosen_elective = elective chosen in student schedule
+            if chosen_elective.name == self.ranked_elective[i] {
+                score += self.ranked_electives.len() - i
+            }
+            */
         }
 
         for c in self.ranked_mandatory_courses {
-            for course in c {
+            for course in 0..c.len() {
                 // i need student schedule to be done
+                /*
+
+                */
             }
         }
+
+        score
     }
 }
