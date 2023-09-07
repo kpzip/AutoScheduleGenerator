@@ -20,10 +20,10 @@ map, student : weight, weight ranges from -1 -> +1, where negative means the tea
 */
 
 pub struct Teacher<'a> {
-    name: &'a str,
-    id: &'a str,
-    ranked_courses: Vec<Course<'a>>,
-    periods_available: Vec<i32>, // students_ranked :
+    pub name: &'a str,
+    pub id: &'a str,
+    pub ranked_courses: Vec<Course<'a>>,
+    pub periods_available: Vec<i32>, // students_ranked :
 }
 
 impl Preference for Teacher<'_> {

@@ -27,13 +27,13 @@ use super::Course::*;
 use super::Preference::*;
 
 pub struct Student<'a> {
-    name: &'a str,
-    id: &'a str,
-    gradenum: i32,
-    element: &'a str,
-    mandatory_courses: Vec<Course<'a>>,
-    ranked_mandatory_courses: Vec<Vec<Course<'a>>>,
-    ranked_electives: Vec<Course<'a>>,
+    pub name: &'a str,
+    pub id: &'a str,
+    pub gradenum: i32,
+    pub element: &'a str,
+    pub mandatory_courses: Vec<Course<'a>>,
+    pub ranked_mandatory_courses: Vec<Vec<Course<'a>>>,
+    pub ranked_electives: Vec<Course<'a>>,
 }
 
 impl Preference for Student<'_> {

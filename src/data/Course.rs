@@ -20,10 +20,10 @@ use super::Preference::*;
 use super::Room::*;
 
 pub struct Course<'a> {
-    name: &'a str,
-    req_one_per_element: bool,
-    prefered_required_room: (i32, Room<'a>),
-    num_periods_per_week: i32,
+    pub name: &'a str,
+    pub req_one_per_element: bool,
+    pub prefered_required_room: (i32, Room<'a>),
+    pub num_periods_per_week: i32,
 }
 
 impl Preference for Course<'_> {
