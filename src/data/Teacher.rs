@@ -1,4 +1,5 @@
-use crate::data::inputdata::*;
+use super::Course::*;
+use super::Preference::*;
 /*
 Variables:
 
@@ -18,23 +19,21 @@ students_ranked
 map, student : weight, weight ranges from -1 -> +1, where negative means the teacher doesn't want the student in their class and +1 means they do
 */
 
-trait preference {
-    fn evaluate(&self) -> f64;
-}
-
 pub struct Teacher<'a> {
     name: &'a str,
     id: &'a str,
-    ranked_courses: Vec<Course::Course>,
+    ranked_courses: Vec<Course<'a>>,
     periods_available: Vec<i32>, // students_ranked :
 }
 
-impl preference for Teacher {
+impl Preference for Teacher<'_> {
     fn evaluate(&self) -> f64 {
-        let mut score: f64 = 0;
+        let mut score: f64 = 0f64;
 
         for course in self.ranked_courses {
             // need teacher schedule to be done
         }
+
+        score
     }
 }

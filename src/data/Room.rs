@@ -10,6 +10,6 @@ room types: normal, chemstry lab, physics lab, biology lab, band, outside, multi
 */
 
 pub struct Room<'a> {
-    id: &'a str,
+    pub id: &'a str,
     room_type: &'a str,
 }

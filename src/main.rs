@@ -1,11 +1,16 @@
 mod data;
-use crate::data::Schedule;
+use crate::data::*;
 
 fn main() {
+    let r = Room::Room {
+        id: "13242397884",
+        room_type: "physics lab",
+    };
+
     let c = Course::Course {
         name: "math",
         req_one_per_element: false,
-        prefered_required_room: (0, None),
+        prefered_required_room: (0, r),
         num_periods_per_week: 7i32,
     };
 

@@ -1,5 +1,3 @@
-mod Preference;
-mod Room;
 /*
 Variables:
 
@@ -18,15 +16,17 @@ second: room that is required or prefered
 num_periods_per_week
 int, the number of periods this course has per week
 */
+use super::Preference::*;
+use super::Room::*;
 
 pub struct Course<'a> {
     name: &'a str,
     req_one_per_element: bool,
-    prefered_required_room: (i32, Room::Room<'a>),
+    prefered_required_room: (i32, Room<'a>),
     num_periods_per_week: i32,
 }
 
-impl Preference::Preference for Course<'_> {
+impl Preference for Course<'_> {
     fn evaluate(&self) -> f64 {
         let mut score: f64 = 0f64;
 
