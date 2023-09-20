@@ -153,3 +153,8 @@ impl<'a> Default for RoomSchedule<'a> {
         }
     }
 }
+
+#[derive(Default)]
+struct MasterSchedule<'a, T: Schedule<'a>> {
+    schedules: Vec<&'a T>,
+}
