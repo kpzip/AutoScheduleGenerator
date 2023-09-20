@@ -1,5 +1,3 @@
-use super::Course::*;
-use super::Preference::*;
 /*
 Variables:
 
@@ -18,7 +16,11 @@ vector of ints, includes all periods the teacher is available to teach
 students_ranked
 map, student : weight, weight ranges from -1 -> +1, where negative means the teacher doesn't want the student in their class and +1 means they do
 */
+use super::Course::*;
+use super::Preference::*;
+use std::clone::Clone;
 
+#[derive(Clone)]
 pub struct Teacher<'a> {
     pub name: &'a str,
     pub id: &'a str,
@@ -28,11 +30,7 @@ pub struct Teacher<'a> {
 
 impl Preference for Teacher<'_> {
     fn evaluate(&self) -> f64 {
-        let mut score: f64 = 0f64;
-
-        for course in self.ranked_courses {
-            // need teacher schedule to be done
-        }
+        let score: f64 = 0f64;
 
         score
     }

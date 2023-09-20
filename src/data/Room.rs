@@ -8,7 +8,9 @@ room_type
 string, describes the type of room
 room types: normal, chemstry lab, physics lab, biology lab, band, outside, multipurpose
 */
+use std::clone::Clone;
 
+#[derive(Clone)]
 pub struct Room<'a> {
     pub id: &'a str,
     pub room_type: &'a str,

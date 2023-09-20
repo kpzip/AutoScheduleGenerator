@@ -18,7 +18,9 @@ int, the number of periods this course has per week
 */
 use super::Preference::*;
 use super::Room::*;
+use std::clone::Clone;
 
+#[derive(Clone)]
 pub struct Course<'a> {
     pub name: &'a str,
     pub req_one_per_element: bool,
@@ -28,11 +30,7 @@ pub struct Course<'a> {
 
 impl Preference for Course<'_> {
     fn evaluate(&self) -> f64 {
-        let mut score: f64 = 0f64;
-
-        if self.prefered_required_room.0 == 1 {
-            // need room schedule to be done
-        }
+        let score: f64 = 0f64;
 
         score
     }

@@ -19,9 +19,9 @@ fn main() {
         id: "1230097438",
         gradenum: 120i32,
         element: "Ne",
-        mandatory_courses: vec![c],
-        ranked_mandatory_courses: vec![vec![c; 1]; 1],
-        ranked_electives: vec![c],
+        mandatory_courses: vec![c.clone()],
+        ranked_mandatory_courses: vec![vec![c.clone()]],
+        ranked_electives: vec![c.clone()],
     };
 
     println!("{}", s.name);

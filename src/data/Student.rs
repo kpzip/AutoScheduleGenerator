@@ -25,7 +25,9 @@ list of Courses, the electives a student wishes to take
 
 use super::Course::*;
 use super::Preference::*;
+use std::clone::Clone;
 
+#[derive(Clone)]
 pub struct Student<'a> {
     pub name: &'a str,
     pub id: &'a str,
@@ -38,26 +40,7 @@ pub struct Student<'a> {
 
 impl Preference for Student<'_> {
     fn evaluate(&self) -> f64 {
-        let mut score: f64 = 0f64;
-
-        for i in 0..self.ranked_electives.len() {
-            // i need student schedule to be done
-            /*
-            chosen_elective = elective chosen in student schedule
-            if chosen_elective.name == self.ranked_elective[i] {
-                score += self.ranked_electives.len() - i
-            }
-            */
-        }
-
-        for c in self.ranked_mandatory_courses {
-            for course in 0..c.len() {
-                // i need student schedule to be done
-                /*
-
-                */
-            }
-        }
+        let score: f64 = 0f64;
 
         score
     }
