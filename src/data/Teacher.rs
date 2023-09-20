@@ -17,8 +17,8 @@ students_ranked
 map, student : weight, weight ranges from -1 -> +1, where negative means the teacher doesn't want the student in their class and +1 means they do
 */
 use super::Course::*;
-use super::Preference::*;
 use std::clone::Clone;
+use std::default::Default;
 
 #[derive(Clone)]
 pub struct Teacher<'a> {
@@ -28,10 +28,13 @@ pub struct Teacher<'a> {
     pub periods_available: Vec<i32>, // students_ranked :
 }
 
-impl Preference for Teacher<'_> {
-    fn evaluate(&self) -> f64 {
-        let score: f64 = 0f64;
-
-        score
+impl<'a> Default for Teacher<'a> {
+    fn default() -> Teacher<'a> {
+        Teacher {
+            name: "",
+            id: "",
+            ranked_courses: Vec::new(),
+            periods_available: Vec::new(),
+        }
     }
 }

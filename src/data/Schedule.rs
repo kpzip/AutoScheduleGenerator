@@ -28,7 +28,7 @@ trait DynamicSchedule<'a>: Schedule<'a> {
 
 pub struct StudentSchedule<'a> {
     has_zero_period: bool,
-    sections: [&'a Section; NUM_PERIODS_IN_DAY + 1],
+    sections: [&'a Section<'a>; NUM_PERIODS_IN_DAY + 1],
 }
 
 impl<'a> Schedule<'a> for StudentSchedule<'a> {
@@ -58,7 +58,7 @@ impl<'a> Default for StudentSchedule<'a> {
 
 pub struct TeacherSchedule<'a> {
     first_teaching_period: u8,
-    sections: Vec<&'a Section>,
+    sections: Vec<&'a Section<'a>>,
 }
 
 impl TeacherSchedule<'_> {
@@ -129,7 +129,7 @@ impl<'a> Default for TeacherSchedule<'a> {
 }
 
 struct RoomSchedule<'a> {
-    sections: [&'a Section; NUM_PERIODS_IN_DAY + 1],
+    sections: [&'a Section<'a>; NUM_PERIODS_IN_DAY + 1],
 }
 
 impl<'a> Schedule<'a> for RoomSchedule<'a> {

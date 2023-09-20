@@ -24,5 +24,5 @@ fn main() {
         ranked_electives: vec![c.clone()],
     };
 
-    println!("{}", s.name);
+    println!("{}", s.element);
 }

@@ -16,9 +16,9 @@ second: room that is required or prefered
 num_periods_per_week
 int, the number of periods this course has per week
 */
-use super::Preference::*;
 use super::Room::*;
 use std::clone::Clone;
+use std::default::Default;
 
 #[derive(Clone)]
 pub struct Course<'a> {
@@ -28,10 +28,13 @@ pub struct Course<'a> {
     pub num_periods_per_week: i32,
 }
 
-impl Preference for Course<'_> {
-    fn evaluate(&self) -> f64 {
-        let score: f64 = 0f64;
-
-        score
+impl<'a> Default for Course<'a> {
+    fn default() -> Course<'a> {
+        Course {
+            name: "",
+            req_one_per_element: false,
+            prefered_required_room: (-1, Room::Default::default()),
+            num_periods_per_week: -1,
+        }
     }
 }

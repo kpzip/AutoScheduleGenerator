@@ -24,8 +24,8 @@ list of Courses, the electives a student wishes to take
 */
 
 use super::Course::*;
-use super::Preference::*;
 use std::clone::Clone;
+use std::default::Default;
 
 #[derive(Clone)]
 pub struct Student<'a> {
@@ -38,10 +38,16 @@ pub struct Student<'a> {
     pub ranked_electives: Vec<Course<'a>>,
 }
 
-impl Preference for Student<'_> {
-    fn evaluate(&self) -> f64 {
-        let score: f64 = 0f64;
-
-        score
+impl<'a> Default for Student<'a> {
+    fn default() -> Student<'a> {
+        Student {
+            name: "",
+            id: "",
+            gradenum: -1,
+            element: "",
+            mandatory_courses: Vec::new(),
+            ranked_mandatory_courses: Vec::new(),
+            ranked_electives: Vec::new(),
+        }
     }
 }
