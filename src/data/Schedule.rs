@@ -15,7 +15,7 @@ pub enum ScheduleType {
     Room,
 }
 
-trait Schedule<'a> {
+trait Schedule<'a>: Clone {
     fn get_section(&self, period: usize) -> &Section;
 
     fn set_section(&mut self, period: usize, section: &'a Section);
@@ -31,6 +31,7 @@ trait DynamicSchedule<'a>: Schedule<'a> {
     fn get_last_period(&self) -> u8;
 }
 
+#[derive(Debug, Clone)]
 pub struct StudentSchedule<'a> {
     has_zero_period: bool,
     sections: [&'a Section<'a>; NUM_PERIODS_IN_DAY + 1],
@@ -63,6 +64,7 @@ impl<'a> Default for StudentSchedule<'a> {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct TeacherSchedule<'a> {
     first_teaching_period: u8,
     sections: Vec<&'a Section<'a>>,
@@ -137,9 +139,10 @@ impl<'a> Default for TeacherSchedule<'a> {
     }
 }
 
-struct RoomSchedule<'a> {
+#[derive(Debug, Clone)]
+pub struct RoomSchedule<'a> {
     sections: [&'a Section<'a>; NUM_PERIODS_IN_DAY + 1],
-    room: &'a Room<'a>,
+    room: &'a Room,
 }
 
 impl<'a> Schedule<'a> for RoomSchedule<'a> {
@@ -165,13 +168,14 @@ impl<'a> Default for RoomSchedule<'a> {
     }
 }
 
-#[derive(Default)]
-struct MasterSchedule<'a, T: Schedule<'a>> {
-    schedules: Vec<&'a T>,
+#[derive(Default, Debug, Clone)]
+pub struct MasterSchedule<'a, T: Schedule<'a>> {
+    pub schedules: Vec<T>,
+    sections: Vec<Section<'a>>,
 }
 
-struct SchoolSchedule {
-    studentSchedules: MasterSchedule<StudentSchedule>,
-    teacherSchedules: MasterSchedule<TeacherSchedule>,
-    roomSchedules: MasterSchedule<RoomSchedule>,
+pub struct SchoolSchedule<'a> {
+    student_schedules: MasterSchedule<'a, StudentSchedule<'a>>,
+    teacher_schedules: MasterSchedule<'a, TeacherSchedule<'a>>,
+    room_schedules: MasterSchedule<'a, RoomSchedule<'a>>,
 }

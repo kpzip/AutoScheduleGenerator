@@ -17,16 +17,15 @@ num_periods_per_week
 int, the number of periods this course has per week
 */
 use super::Room::*;
-use std::clone::Clone;
 use std::default::Default;
 
 pub const NO_COURSE: Course = Course::default();
 
-#[derive(Clone)]
+#[derive(Debug)]
 pub struct Course<'a> {
     pub name: &'a str,
     pub req_one_per_element: bool,
-    pub prefered_required_room: Option<&'a Room<'a>>,
+    pub prefered_required_room: Option<&'a Room>,
     pub num_periods_per_week: u8,
 }
 

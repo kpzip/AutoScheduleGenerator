@@ -16,27 +16,15 @@ vector of ints, includes all periods the teacher is available to teach
 students_ranked
 map, student : weight, weight ranges from -1 -> +1, where negative means the teacher doesn't want the student in their class and +1 means they do
 */
-use super::Course::*;
-use std::clone::Clone;
-use std::default::{self, Default};
+use super::{Course::*, Schedule::NUM_PERIODS_IN_DAY};
+use std::default::Default;
 
 pub const NOT_A_TEACHER: Teacher = Default::default();
 
-#[derive(Clone)]
+#[derive(Debug, Default)]
 pub struct Teacher<'a> {
-    pub name: &'a str,
-    pub id: &'a str,
+    pub name: String,
+    pub id: u64,
     pub ranked_courses: Vec<Course<'a>>,
-    pub periods_available: Vec<i32>, // students_ranked :
-}
-
-impl<'a> Default for Teacher<'a> {
-    fn default() -> Teacher<'a> {
-        Teacher {
-            name: "",
-            id: "",
-            ranked_courses: Vec::new(),
-            periods_available: Vec::new(),
-        }
-    }
+    pub periods_available: [bool; NUM_PERIODS_IN_DAY + 1], // students_ranked :
 }

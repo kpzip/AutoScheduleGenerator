@@ -1,7 +1,10 @@
 mod data;
+use crate::data::Student::Student;
 use crate::data::*;
 
 fn main() {
+    let students: Vec<Student> = Vec::new();
+
     let r = Room::Room {
         id: "13242397884",
         room_type: "physics lab",
@@ -14,7 +17,7 @@ fn main() {
         num_periods_per_week: 7,
     };
 
-    let s = Student::Student {
+    let s = Student {
         name: String::from("unlazy world"),
         id: 1230097438,
         gradenum: 120,

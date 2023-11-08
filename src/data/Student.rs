@@ -26,26 +26,26 @@ list of Courses, the electives a student wishes to take
 pub const NOT_A_STUDENT: Student = Default::default();
 
 use super::Course::*;
-use std::clone::Clone;
+use super::Element::*;
 use std::default::Default;
 use std::thread;
 
 static mut ID_COUNTER: u64 = 0;
 
-#[derive(Clone)]
+#[derive(Debug)]
 pub struct Student<'a> {
     name: String,
     id: u64,
     gradenum: u8,
-    element: &'a str,
+    element: Option<Element>,
     mandatory_courses: Vec<&'a Course<'a>>,
     ranked_mandatory_courses: Vec<Vec<&'a Course<'a>>>,
     ranked_electives: Vec<&'a Course<'a>>,
 }
 
-impl Student<'_> {
+impl<'a> Student<'a> {
     //only call on the main thread!!!!
-    pub fn new(name: String, grade: u8, element: &'static str) -> Student {
+    pub fn new(name: String, grade: u8) -> Student<'a> {
         //really bad but it works I guess
         assert_eq!(thread::current().name().unwrap(), "main");
         let current_id;
@@ -57,7 +57,7 @@ impl Student<'_> {
             name,
             id: current_id,
             gradenum: grade,
-            element,
+            element: None,
             ..Default::default()
         }
     }
@@ -69,7 +69,7 @@ impl<'a> Default for Student<'a> {
             name: String::from("John Doe"),
             id: u64::MAX,
             gradenum: 0, //imagine being in grade 0... idiot
-            element: "",
+            element: None,
             mandatory_courses: Vec::new(),
             ranked_mandatory_courses: Vec::new(),
             ranked_electives: Vec::new(),
