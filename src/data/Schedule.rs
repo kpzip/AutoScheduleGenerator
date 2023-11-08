@@ -1,4 +1,9 @@
-use super::Section::*;
+use super::{
+    Room::{Room, NOT_A_ROOM},
+    Section::*,
+    Student::{Student, NOT_A_STUDENT},
+    Teacher::{Teacher, NOT_A_TEACHER},
+};
 use std::default::Default;
 
 //not including zero period
@@ -29,6 +34,7 @@ trait DynamicSchedule<'a>: Schedule<'a> {
 pub struct StudentSchedule<'a> {
     has_zero_period: bool,
     sections: [&'a Section<'a>; NUM_PERIODS_IN_DAY + 1],
+    student: &'a Student<'a>,
 }
 
 impl<'a> Schedule<'a> for StudentSchedule<'a> {
@@ -52,6 +58,7 @@ impl<'a> Default for StudentSchedule<'a> {
         StudentSchedule {
             has_zero_period: true,
             sections: [&EMPTY_SECTION; NUM_PERIODS_IN_DAY + 1],
+            student: &NOT_A_STUDENT,
         }
     }
 }
@@ -59,6 +66,7 @@ impl<'a> Default for StudentSchedule<'a> {
 pub struct TeacherSchedule<'a> {
     first_teaching_period: u8,
     sections: Vec<&'a Section<'a>>,
+    teacher: &'a Teacher<'a>,
 }
 
 impl TeacherSchedule<'_> {
@@ -122,14 +130,16 @@ impl<'a> DynamicSchedule<'a> for TeacherSchedule<'a> {
 impl<'a> Default for TeacherSchedule<'a> {
     fn default() -> TeacherSchedule<'a> {
         TeacherSchedule {
-            sections: vec![],
+            sections: Vec::new(),
             first_teaching_period: 1,
+            teacher: &NOT_A_TEACHER,
         }
     }
 }
 
 struct RoomSchedule<'a> {
     sections: [&'a Section<'a>; NUM_PERIODS_IN_DAY + 1],
+    room: &'a Room<'a>,
 }
 
 impl<'a> Schedule<'a> for RoomSchedule<'a> {
@@ -150,6 +160,7 @@ impl<'a> Default for RoomSchedule<'a> {
     fn default() -> RoomSchedule<'a> {
         RoomSchedule {
             sections: [&EMPTY_SECTION; NUM_PERIODS_IN_DAY + 1],
+            room: &NOT_A_ROOM,
         }
     }
 }
@@ -157,4 +168,10 @@ impl<'a> Default for RoomSchedule<'a> {
 #[derive(Default)]
 struct MasterSchedule<'a, T: Schedule<'a>> {
     schedules: Vec<&'a T>,
+}
+
+struct SchoolSchedule {
+    studentSchedules: MasterSchedule<StudentSchedule>,
+    teacherSchedules: MasterSchedule<TeacherSchedule>,
+    roomSchedules: MasterSchedule<RoomSchedule>,
 }

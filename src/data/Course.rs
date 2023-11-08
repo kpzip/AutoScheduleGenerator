@@ -20,21 +20,23 @@ use super::Room::*;
 use std::clone::Clone;
 use std::default::Default;
 
+pub const NO_COURSE: Course = Course::default();
+
 #[derive(Clone)]
 pub struct Course<'a> {
     pub name: &'a str,
     pub req_one_per_element: bool,
-    pub prefered_required_room: (i32, Room<'a>),
-    pub num_periods_per_week: i32,
+    pub prefered_required_room: Option<&'a Room<'a>>,
+    pub num_periods_per_week: u8,
 }
 
 impl<'a> Default for Course<'a> {
     fn default() -> Course<'a> {
         Course {
-            name: "",
+            name: "Unknown Course",
             req_one_per_element: false,
-            prefered_required_room: (-1, Room::Default::default()),
-            num_periods_per_week: -1,
+            prefered_required_room: None,
+            num_periods_per_week: 5,
         }
     }
 }

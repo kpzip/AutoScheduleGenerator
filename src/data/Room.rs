@@ -11,6 +11,8 @@ room types: normal, chemstry lab, physics lab, biology lab, band, outside, multi
 use std::clone::Clone;
 use std::default::Default;
 
+pub const NOT_A_ROOM: Room = Default::default();
+
 #[derive(Clone)]
 pub struct Room<'a> {
     pub id: &'a str,

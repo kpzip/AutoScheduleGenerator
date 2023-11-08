@@ -18,7 +18,9 @@ map, student : weight, weight ranges from -1 -> +1, where negative means the tea
 */
 use super::Course::*;
 use std::clone::Clone;
-use std::default::Default;
+use std::default::{self, Default};
+
+pub const NOT_A_TEACHER: Teacher = Default::default();
 
 #[derive(Clone)]
 pub struct Teacher<'a> {

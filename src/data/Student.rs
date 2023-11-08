@@ -23,6 +23,8 @@ ranked_electives
 list of Courses, the electives a student wishes to take
 */
 
+pub const NOT_A_STUDENT: Student = Default::default();
+
 use super::Course::*;
 use std::clone::Clone;
 use std::default::Default;
